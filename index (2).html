@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGen Intelligence | Student Verification</title>
+<style>
+:root{--navy:#101a35;--blue:#4263eb;--cyan:#16b8c8;--bg:#f4f7fc;--text:#18233d;--muted:#71809b;--line:#e5eaf3;--green:#159b70;--red:#d94b60;--amber:#bd831c}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Arial;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}
+.auth-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:#fff}.hero{background:linear-gradient(145deg,#101a35,#263f83 65%,#167e9b);color:white;padding:9vh 8%;display:flex;flex-direction:column;justify-content:center}.brand{font-weight:800;font-size:20px;letter-spacing:.3px}.brand span{color:#54d7dc}.hero h1{font-size:clamp(34px,4vw,56px);line-height:1.08;margin:65px 0 18px}.hero p{color:#d7e2ff;max-width:480px;line-height:1.7}.hero .pill{display:inline-flex;border:1px solid #ffffff44;border-radius:30px;padding:9px 14px;margin-top:26px;width:max-content;font-size:13px}.auth-panel{display:flex;align-items:center;justify-content:center;padding:36px}.auth-card{width:min(440px,100%)}.auth-card h2{font-size:29px;margin:0 0 8px}.sub{color:var(--muted);font-size:14px;margin:0 0 26px}.tabs{display:flex;background:#f0f3fa;border-radius:12px;padding:4px;margin-bottom:22px}.tabs button{flex:1;padding:11px;background:transparent;border-radius:9px;color:var(--muted);font-weight:650}.tabs button.active{background:#fff;color:var(--blue);box-shadow:0 2px 8px #17264a12}
+label{display:block;font-size:13px;font-weight:650;margin:14px 0 7px}input,select,textarea{width:100%;border:1px solid #dce3ef;border-radius:10px;padding:12px 13px;background:#fff;outline:none;color:var(--text)}input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4263eb16}.btn{background:var(--blue);color:white;border-radius:10px;padding:12px 16px;font-weight:700}.btn:hover{filter:brightness(.96)}.btn.full{width:100%;margin-top:20px}.btn.secondary{background:#edf1ff;color:var(--blue)}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--text)}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin-top:14px}.msg{font-size:13px;margin-top:12px;line-height:1.5}.msg.error{color:var(--red)}.msg.ok{color:var(--green)}
+.app{min-height:100vh}.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 4%;position:sticky;top:0;z-index:5}.topbar .brand{color:var(--navy)}.userbox{display:flex;align-items:center;gap:12px;font-size:13px}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#e9edff;color:var(--blue);font-weight:800}.layout{display:grid;grid-template-columns:245px 1fr;min-height:calc(100vh - 72px)}aside{background:#fff;border-right:1px solid var(--line);padding:24px 14px}.side-label{font-size:10px;color:#9aa6ba;font-weight:800;letter-spacing:1.3px;padding:8px 12px}.nav{display:flex;gap:11px;align-items:center;padding:12px;border-radius:10px;color:#63718a;font-weight:600;font-size:14px;margin:3px 0;background:transparent;width:100%;text-align:left}.nav.active,.nav:hover{background:#eef1ff;color:var(--blue)}main{padding:32px 4%;max-width:1500px;width:100%;margin:auto}.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:25px}.page-head h1{margin:0 0 6px;font-size:27px}.page-head p{margin:0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px;box-shadow:0 4px 16px #14254b05}.stat small{color:var(--muted);font-weight:600}.stat strong{display:block;font-size:29px;margin:10px 0 4px}.stat em{font-style:normal;font-size:12px;color:var(--muted)}.panel{margin-top:18px}.panel h3{margin:0 0 17px;font-size:16px}.two{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.span2{grid-column:1/-1}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:680px}th,td{text-align:left;padding:13px 11px;border-bottom:1px solid #edf0f5;font-size:13px}th{color:#8290a7;font-size:11px;text-transform:uppercase;letter-spacing:.6px}td{color:#34415a}.badge{display:inline-block;padding:5px 9px;border-radius:20px;font-size:11px;font-weight:750;background:#edf1f7;color:#68758a}.badge.accepted,.badge.approved{background:#e6f7f0;color:#12815c}.badge.flagged,.badge.rejected{background:#fff0f1;color:#c44155}.badge.pending{background:#fff6e5;color:#a87518}.actions{display:flex;gap:8px;align-items:center}.actions select{padding:7px;min-width:115px}.small{font-size:12px;color:var(--muted)}.empty{padding:28px;text-align:center;color:var(--muted);font-size:14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar input{max-width:300px}.qr-box{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.qr-box img{width:130px;height:130px;border:1px solid var(--line);padding:8px;border-radius:12px}.notice{padding:12px 14px;border-radius:10px;background:#fff8e8;color:#89611b;font-size:12px;line-height:1.5;margin-top:14px}.record-list{display:grid;gap:10px}.record{border:1px solid var(--line);border-radius:11px;padding:13px;display:flex;justify-content:space-between;gap:10px;font-size:13px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}aside{display:flex;overflow:auto;padding:9px;border-right:0;border-bottom:1px solid var(--line)}.side-label{display:none}.nav{white-space:nowrap;width:auto}.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.auth-wrap{grid-template-columns:1fr}.hero{display:none}}
+@media(max-width:520px){main{padding:22px 15px}.grid{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.span2{grid-column:auto}.page-head{flex-direction:column}.auth-panel{padding:24px}.topbar{padding:0 15px}}
+</style>
+</head>
+<body>
+<section id="auth" class="auth-wrap">
+  <div class="hero">
+    <div class="brand">NEXTGEN <span>INTELLIGENCE</span></div>
+    <h1>Trust every<br>student record.</h1>
+    <p>A unified student identity verification workspace for officers and administrators, with AI-assisted risk signals and transparent record monitoring.</p>
+    <div class="pill">● Secure role-based workspace</div>
+  </div>
+  <div class="auth-panel"><div class="auth-card">
+    <div class="brand" style="color:#101a35;margin-bottom:35px">NEXTGEN <span>INTELLIGENCE</span></div>
+    <h2 id="authTitle">Create your account</h2><p class="sub" id="authSub">Create an officer account. Admin accounts are created securely by the system owner.</p>
+    <div class="tabs"><button id="registerTab" class="active" onclick="showAuth('register')">Create account</button><button id="loginTab" onclick="showAuth('login')">Sign in</button></div>
+    <form id="registerForm">
+      <label>Username</label><input name="username" required minlength="3" autocomplete="username" placeholder="Choose a username">
+      <label>Password</label><input name="password" type="password" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters">
+      <button class="btn full">Create account</button>
+    </form>
+    <form id="loginForm" class="hidden">
+      <label>Username</label><input name="username" required autocomplete="username" placeholder="Your username">
+      <label>Password</label><input name="password" type="password" required autocomplete="current-password" placeholder="Your password">
+      <button class="btn full">Sign in</button>
+    </form>
+    <div id="authMsg" class="msg"></div>
+    <p class="hint">No demo credentials are provided. Public registration creates Officer accounts only. Admin accounts must be created using the private backend setup key; never put that key in this page.</p>
+    <label style="margin-top:22px">Backend API URL</label><input id="apiBase" placeholder="https://your-api-host.example.com" value="">
+    <p class="hint">For local testing, use http://127.0.0.1:8000. GitHub Pages cannot run the Python API itself.</p>
+  </div></div>
+</section>
+<section id="app" class="app hidden">
+  <header class="topbar"><div class="brand">NEXTGEN <span>INTELLIGENCE</span></div><div class="userbox"><div class="avatar" id="avatar">U</div><div><b id="who">User</b><div class="small" id="roleLabel">Officer</div></div><button class="btn ghost" onclick="logout()">Sign out</button></div></header>
+  <div class="layout">
+    <aside><div class="side-label">WORKSPACE</div>
+      <button class="nav active" data-page="dashboard" onclick="go('dashboard')">▦ &nbsp; Dashboard</button>
+      <button class="nav" data-page="students" onclick="go('students')">▤ &nbsp; Student records</button>
+      <button class="nav officer-only" data-page="add" onclick="go('add')">＋ &nbsp; Add student</button>
+      <button class="nav" data-page="qr" onclick="go('qr')">▦ &nbsp; Student QR code</button>
+      <button class="nav admin-only" data-page="monitor" onclick="go('monitor')">◉ &nbsp; Admin monitoring</button>
+      <button class="nav" data-page="discussion" onclick="go('discussion')">☷ &nbsp; Discussion / concerns</button>
+    </aside>
+    <main>
+      <div id="dashboard" class="page">
+        <div class="page-head"><div><h1>Dashboard</h1><p>Overview of student identity verification activity.</p></div><button class="btn" onclick="refreshAll()">↻ Refresh data</button></div>
+        <div class="grid">
+          <div class="stat"><small>Total student records</small><strong id="totalStat">—</strong><em>From connected API</em></div>
+          <div class="stat"><small>Accepted</small><strong id="acceptedStat">—</strong><em>Backend status: accepted</em></div>
+          <div class="stat"><small>Flagged</small><strong id="flaggedStat">—</strong><em>Requires review</em></div>
+          <div class="stat"><small>Flag rate</small><strong id="rateStat">—</strong><em>Admin statistics</em></div>
+        </div>
+        <div class="panel"><h3>Recent student records</h3><div id="recentTable" class="empty">Sign in and load records to see data.</div></div>
+      </div>
+      <div id="students" class="page hidden">
+        <div class="page-head"><div><h1>Student records</h1><p>Search and review records returned by the backend.</p></div><button class="btn" onclick="loadStudents()">Refresh</button></div>
+        <div class="panel"><div class="toolbar"><input id="studentSearch" placeholder="Search name, email, institution..." oninput="renderStudents()"><select id="statusFilter" onchange="renderStudents()" style="max-width:180px"><option value="">All statuses</option><option>verified</option><option>flagged</option><option>accepted</option><option>rejected</option></select></div><div id="studentTable" class="empty">Loading records...</div></div>
+      </div>
+      <div id="add" class="page hidden officer-only">
+        <div class="page-head"><div><h1>Register a student</h1><p>Submit student details for AI-assisted duplicate and anomaly checks.</p></div></div>
+        <div class="panel"><form id="studentForm"><div class="form-grid">
+          <div><label>Student full name</label><input name="name" required placeholder="Full name"></div>
+          <div><label>AAPAR ID</label><input name="aapar_id" required placeholder="Student AAPAR ID"></div>
+          <div><label>Email address</label><input name="email" type="email" required placeholder="name@example.com"></div>
+          <div><label>Phone number</label><input name="phone" required pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit Indian mobile number" placeholder="10-digit mobile number"></div>
+          <div class="span2"><label>Institution</label><input name="institution" required placeholder="College / institution name"></div>
+        </div><button class="btn" style="margin-top:20px">Submit student record</button></form><div id="studentMsg" class="msg"></div></div>
+        <div id="newStudentResult" class="panel hidden"><h3>Submission result</h3><div id="resultDetails"></div></div>
+      </div>
+      <div id="qr" class="page hidden"><div class="page-head"><div><h1>Student QR code</h1><p>Generate a QR code from a student record ID.</p></div></div><div class="panel"><label>Student record ID</label><input id="qrId" type="number" min="1" placeholder="Enter student ID"><button class="btn" style="margin-top:14px" onclick="makeQR()">Generate QR code</button><div id="qrResult" class="qr-box" style="margin-top:20px"></div><p class="hint">The QR contains the record ID and this website address only. It does not expose student personal details.</p></div></div>
+      <div id="monitor" class="page hidden admin-only"><div class="page-head"><div><h1>Admin monitoring</h1><p>Read-only monitoring of records, AI flags and relationship graph.</p></div><button class="btn" onclick="loadAdmin()">Refresh monitoring</button></div><div class="two"><div class="panel"><h3>Suspicious record clusters</h3><div id="clusters" class="empty">Load monitoring data.</div></div><div class="panel"><h3>Activity summary</h3><div id="adminSummary" class="empty">Admin statistics load here.</div></div></div><div class="notice">Admin monitoring is read-only in this interface. The backend exposes protected monitoring, audit-log, and concern-review routes.</div></div>
+      <div id="discussion" class="page hidden"><div class="page-head"><div><h1>Discussion / concerns</h1><p>Submit a correction request for a student record and review requests as an admin.</p></div></div>
+      <div class="panel"><h3>Submit a concern</h3><form id="concernForm"><div class="form-grid">
+        <div><label>Student record ID</label><input name="student_id" type="number" min="1" required placeholder="Record ID"></div>
+        <div><label>Reason / message</label><input name="message" required minlength="5" maxlength="2000" placeholder="Explain the concern"></div>
+        <div><label>Corrected name (optional)</label><input name="corrected_name" placeholder="Correct name"></div>
+        <div><label>Corrected email (optional)</label><input name="corrected_email" type="email" placeholder="Correct email"></div>
+        <div><label>Corrected phone (optional)</label><input name="corrected_phone" pattern="[6-9][0-9]{9}" placeholder="10-digit phone"></div>
+        <div><label>Corrected AAPAR ID (optional)</label><input name="corrected_aapar_id" placeholder="Correct ID"></div>
+        </div><button class="btn" style="margin-top:18px">Submit concern</button></form><div id="concernMsg" class="msg"></div></div>
+      <div class="panel admin-only hidden" style="margin-top:20px"><div class="page-head"><div><h3>Concern review queue</h3><p class="small">Admins can approve or reject submitted correction requests.</p></div><button class="btn secondary" onclick="loadConcerns()">Refresh</button></div><div id="concernList" class="empty">Load concern requests.</div></div>
+      </div></div>
+    </main>
+  </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+let token=sessionStorage.getItem('ngi_token')||'', role=sessionStorage.getItem('ngi_role')||'', username=sessionStorage.getItem('ngi_user')||'', students=[];
+function apiBase(){return ($('apiBase').value.trim()||localStorage.getItem('ngi_api')||'http://127.0.0.1:8000').replace(/\/+$/,'')}
+$('apiBase').addEventListener('change',()=>localStorage.setItem('ngi_api',$('apiBase').value.trim()));
+$('apiBase').value=localStorage.getItem('ngi_api')||'';
+function showAuth(mode){$('registerForm').classList.toggle('hidden',mode!=='register');$('loginForm').classList.toggle('hidden',mode!=='login');$('registerTab').classList.toggle('active',mode==='register');$('loginTab').classList.toggle('active',mode==='login');$('authTitle').textContent=mode==='register'?'Create your account':'Welcome back';$('authSub').textContent=mode==='register'?'Create an officer account. Admin accounts are created securely by the system owner.':'Sign in to your NextGen Intelligence workspace.';$('authMsg').textContent='';}
+function message(el,text,type=''){el.textContent=text;el.className='msg '+type}
+async function request(path,options={}){const headers={...(options.headers||{})};if(token)headers.Authorization='Bearer '+token;const r=await fetch(apiBase()+path,{...options,headers});let data={};try{data=await r.json()}catch{}if(!r.ok)throw new Error(data.detail||data.error||('Request failed ('+r.status+')'));return data}
+$('registerForm').addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target);const payload={username:f.get('username').trim(),password:f.get('password')};try{await request('/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});message($('authMsg'),'Account created. Please sign in with your new credentials.','ok');showAuth('login')}catch(err){message($('authMsg'),err.message,'error')}});
+$('loginForm').addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target);const body=new URLSearchParams({username:f.get('username'),password:f.get('password')});try{const r=await fetch(apiBase()+'/auth/login',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});const data=await r.json();if(!r.ok)throw new Error(data.detail||'Login failed');token=data.access_token;role=data.role;username=f.get('username');sessionStorage.setItem('ngi_token',token);sessionStorage.setItem('ngi_role',role);sessionStorage.setItem('ngi_user',username);enterApp()}catch(err){message($('authMsg'),err.message,'error')}});
+function enterApp(){$('auth').classList.add('hidden');$('app').classList.remove('hidden');$('who').textContent=username;$('roleLabel').textContent=role.toUpperCase();$('avatar').textContent=username.charAt(0).toUpperCase();document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',role!=='admin'));document.querySelectorAll('.officer-only').forEach(x=>x.classList.toggle('hidden',role!=='officer'));go('dashboard');refreshAll()}
+function logout(){token='';role='';username='';sessionStorage.clear();$('app').classList.add('hidden');$('auth').classList.remove('hidden');showAuth('login')}
+function go(page){document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));$(page).classList.remove('hidden');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===page));if(page==='students')loadStudents();if(page==='monitor'&&role==='admin')loadAdmin();if(page==='discussion'&&role==='admin')loadConcerns()}
+async function refreshAll(){await loadStudents();if(role==='admin'){await loadAdmin();await loadConcerns();}else{$('rateStat').textContent='Admin only'}}
+async function loadStudents(){try{students=await request('/students');renderStudents();$('totalStat').textContent=students.length;$('acceptedStat').textContent=students.filter(s=>s.status==='accepted').length;$('flaggedStat').textContent=students.filter(s=>s.status==='flagged').length;$('recentTable').innerHTML=tableHTML(students.slice(0,5),false)}catch(e){$('studentTable').innerHTML='<div class="empty">'+esc(e.message)+'</div>';$('recentTable').textContent=e.message}}
+function renderStudents(){const q=($('studentSearch')?.value||'').toLowerCase(),st=$('statusFilter')?.value||'';const rows=students.filter(s=>(!st||s.status===st)&&[s.name,s.email,s.institution,s.aapar_id].some(v=>(v||'').toLowerCase().includes(q)));$('studentTable').innerHTML=tableHTML(rows,true)}
+function tableHTML(rows,withActions){if(!rows.length)return '<div class="empty">No student records returned by the backend yet.</div>';return '<div class="table-wrap"><table><thead><tr><th>ID</th><th>Student</th><th>Institution</th><th>Risk</th><th>Status</th>'+(withActions&&role==='officer'?'<th>Officer decision</th>':'')+'</tr></thead><tbody>'+rows.map(s=>'<tr><td>#'+s.id+'</td><td><b>'+esc(s.name)+'</b><br><span class="small">'+esc(s.email)+'</span></td><td>'+esc(s.institution)+'</td><td>'+Math.round((s.risk_score||0)*100)+'%</td><td><span class="badge '+esc(s.status)+'">'+esc(s.status)+'</span></td>'+(withActions&&role==='officer'?'<td><div class="actions"><select onchange="changeStatus('+s.id+',this.value)"><option value="">Decision…</option><option value="accepted">Accepted</option><option value="rejected">Rejected</option></select></div></td>':'')+'</tr>').join('')+'</tbody></table></div>'}
+async function changeStatus(id,status){if(!status)return;try{await request('/students/'+id+'/status',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status})});await loadStudents()}catch(e){alert(e.message+(e.message.includes('Admins only')?' — your current main.py permits only admins to change status, not officers.':''));}}
+$('studentForm').addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target);const payload=Object.fromEntries(f.entries());try{const s=await request('/students',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});message($('studentMsg'),'Student submitted successfully. Record ID: '+s.id,'ok');$('newStudentResult').classList.remove('hidden');$('resultDetails').innerHTML='<p><b>'+esc(s.name)+'</b> — Record #'+s.id+'</p><p>AI risk score: '+Math.round((s.risk_score||0)*100)+'%</p><p>Status: <span class="badge '+esc(s.status)+'">'+esc(s.status)+'</span></p><p>'+esc(s.reason||'No risk reasons returned.')+'</p><button class="btn secondary" onclick="$(\\'qrId\\').value='+s.id+';go(\\'qr\\');makeQR()">Generate QR code</button>';e.target.reset();await loadStudents()}catch(err){message($('studentMsg'),err.message,'error')}});
+async function loadAdmin(){try{const [stats,graph]=await Promise.all([request('/admin/stats'),request('/graph')]);$('totalStat').textContent=stats.total;$('acceptedStat').textContent=stats.accepted;$('flaggedStat').textContent=stats.flagged;$('rateStat').textContent=Math.round(stats.flag_rate*100)+'%';$('adminSummary').innerHTML='<div class="record"><span>Total records</span><b>'+stats.total+'</b></div><div class="record"><span>Flagged records</span><b>'+stats.flagged+'</b></div><div class="record"><span>Accepted records</span><b>'+stats.accepted+'</b></div><div class="record"><span>Flag rate</span><b>'+Math.round(stats.flag_rate*100)+'%</b></div>';$('clusters').innerHTML=graph.suspicious_clusters?.length?graph.suspicious_clusters.map(c=>'<div class="record"><span>Linked student IDs</span><b>'+c.join(', ')+'</b></div>').join(''):'<div class="empty">No suspicious clusters reported.</div>'}catch(e){$('adminSummary').textContent=e.message;$('clusters').textContent=e.message}}
+function makeQR(){const id=$('qrId').value;if(!id||Number(id)<1){$('qrResult').textContent='Enter a valid student record ID.';return}const payload=location.origin+location.pathname+'?student='+encodeURIComponent(id);$('qrResult').innerHTML='<div id="qrCanvas"></div><div><b>Student record #'+esc(id)+'</b><p class="small">QR contains the record ID and site address.</p><button class="btn secondary" onclick="downloadQR()">Download QR</button></div>';if(window.QRCode)new QRCode($('qrCanvas'),{text:payload,width:130,height:130});else $('qrResult').insertAdjacentText('beforeend',' QR library could not load.')}
+function downloadQR(){const img=$('qrCanvas')?.querySelector('img'),canvas=$('qrCanvas')?.querySelector('canvas');const src=img?.src||canvas?.toDataURL();if(!src)return;const a=document.createElement('a');a.href=src;a.download='student-'+$('qrId').value+'-qr.png';a.click()}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+$('concernForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const f=new FormData(e.target), payload={student_id:Number(f.get('student_id')),message:f.get('message').trim()};
+  for(const k of ['corrected_name','corrected_email','corrected_phone','corrected_aapar_id']){const v=(f.get(k)||'').trim();if(v)payload[k]=v;}
+  try{const out=await request('/concerns',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    message($('concernMsg'),'Concern submitted. Reference #'+out.concern_id,'ok');e.target.reset();
+  }catch(err){message($('concernMsg'),err.message,'error');}
+});
+async function loadConcerns(){
+  if(role!=='admin')return;
+  try{const items=await request('/concerns');
+    $('concernList').innerHTML=items.length?items.map(c=>`<div class="record" style="display:block;margin:10px 0"><b>Concern #${c.id} · Student #${c.student_id} — ${esc(c.name||'')}</b><p>${esc(c.message||'')}</p><p class="small">Requested changes: ${esc([c.corrected_name,c.corrected_email,c.corrected_phone,c.corrected_aapar_id].filter(Boolean).join(' · ')||'No field changes')}</p><p>Status: ${esc(c.status)}</p>${c.status==='pending'?`<textarea id="note-${c.id}" placeholder="Admin note (optional)"></textarea><div class="actions"><button class="btn" onclick="reviewConcern(${c.id},true)">Approve</button><button class="btn secondary" onclick="reviewConcern(${c.id},false)">Reject</button></div>`:''}</div>`).join(''):'<div class="empty">No concern requests found.</div>';
+  }catch(e){$('concernList').textContent=e.message;}
+}
+async function reviewConcern(id,approve){
+  const admin_note=$('note-'+id)?.value||'';
+  try{await request('/concerns/'+id+'/review',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({approve,admin_note})});await loadConcerns();await loadStudents();}
+  catch(e){alert(e.message);}
+}
+
+if(token&&role&&username)enterApp();else showAuth('register');
+</script>
+</body></html>
